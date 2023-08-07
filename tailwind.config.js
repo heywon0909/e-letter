@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "template":"url('https://picsum.photos/600/400/?random')"
+      }
+    },
   },
   plugins: [],
 }
