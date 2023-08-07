@@ -1,9 +1,17 @@
+import { useNavigate } from 'react-router';
+
 export default function CardSelect() {
+
+    const navigate = useNavigate();
+    const goTemplate = (id: number) => {
+        navigate(`/card/${id}`);
+    }
+
     return (
        <section className='w-full md:h-full flex flex-col justify-center items-center'>  
         <div className='md:w-3/4 w-11/12 flex justify-center'>
             <ul className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 my-4 h-70 w-full'>
-               <article className="overflow-hidden rounded-lg shadow-lg bg-template h-72 p-4">
+               <article className="overflow-hidden rounded-lg shadow-lg bg-template h-72 p-4 hover:scale-105" onClick={()=>goTemplate(1)}>
                 <div className="flex flex-col items-center justify-center bg-white h-full">
                     <h1 className="text-sm">
                         ooo에게
@@ -16,7 +24,7 @@ export default function CardSelect() {
                 
 
                 </article>
-                <article className="overflow-hidden rounded-lg shadow-lg h-72">
+                <article className="overflow-hidden rounded-lg shadow-lg h-72 hover:scale-105" onClick={()=>goTemplate(2)}>
 
                 <a href="#">
                     <img alt="Placeholder" className="block h-3/5 w-full" src="https://picsum.photos/600/400/?random" />
@@ -47,7 +55,7 @@ export default function CardSelect() {
                 </div>
 
                 </article>
-                <article className="overflow-hidden rounded-lg shadow-lg h-72">
+                <article className="overflow-hidden rounded-lg shadow-lg h-72 hover:scale-105" onClick={()=>goTemplate(3)}>
 
                 <a href="#" className='w-full flex justify-center'>
                     <img alt="Placeholder" className="block rounded-full w-28 h-28" src="https://picsum.photos/600/400/?random" />
