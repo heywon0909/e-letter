@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 import { setUser } from '../slices/userSlice';
+import { signWithKakaoLogin } from '../../firebase/firebase';
 
 export const kakaoUserLogin = createAsyncThunk('user/setUser',
     async (code:string, thunkApi) => {
@@ -22,13 +23,17 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
                 console.log('result2', result);
                 const { properties } = result.data;
                 const { kakao_account } = result.data;
-                
-                thunkApi.dispatch(setUser({
+                const user = {
+                    id: result.data.id,
                     name: properties?.nickname,
                     image: properties?.profile_image,
                     email: kakao_account?.email,
-                    gender:kakao_account?.gender
-                }))
+                    gender: kakao_account?.gender
+                }
+
+
+                thunkApi.dispatch(setUser(user));
+                signWithKakaoLogin(user);
             })
         })
     })

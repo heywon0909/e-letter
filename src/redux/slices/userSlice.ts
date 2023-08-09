@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { kakaoUserLogin } from '../thunks/kakaoUserSetting';
 
-interface UserType {
+export interface UserType {
+    id:number,
     name: string,
     image:string,
     email?: string,
