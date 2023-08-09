@@ -1,0 +1,6 @@
+
+interface Window{
+    Kakao: unknown;
+}
+
+

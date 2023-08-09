@@ -15,3 +15,23 @@
 #banner{
    animation: fadeInTop 2.3s ease-in-out;
 }
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 16px, 0);
+  }
+}
+
+#bouncing-loader > div {
+  margin: 3rem 0.2rem;
+  animation: bouncing-loader 0.5s infinite alternate;
+}
+
+
+#bouncing-loader > div:nth-child(2){
+   animation-delay: 0.2s;
+}
+#bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
