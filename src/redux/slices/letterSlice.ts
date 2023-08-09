@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface LetterState {
+export interface LetterState {
     id:number,
     From: string,
     to: string,

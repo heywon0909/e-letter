@@ -1,8 +1,10 @@
+import { LetterState } from './../redux/slices/letterSlice';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
-import {get, getDatabase, ref, set} from "firebase/database"
+import {get, getDatabase, ref, set, update} from "firebase/database"
 import { UserType } from '../redux/slices/userSlice';
+import { LetterState } from '../redux/slices/letterSlice';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -34,6 +36,28 @@ export function signWithKakaoLogin(user:UserType) {
             ...user
             }).catch((error)=>console.error(error))
         }
+    })
+    
+}
+export function addLetters(userId:number,letter:LetterState) {
+    return get(ref(database, `letter/${userId}`)).then((snapshot) => {
+        console.log('snpa', snapshot);
+        if (!snapshot.exists()) {
+            return set(ref(database, `letter/${userId}`), {
+                ...letter
+            }).catch((error) => console.error(error))
+        }    
+        // } else {
+        //     interface updateObj{
+        //         [key:string] : any[]
+        //     }
+        //     const updates:updateObj = {}
+        //     updates[`letter/${userId}`] = {
+        //        ...snapshot.val(), letter
+        //     }
+            
+        //     update(ref(database),updates)
+        // }
     })
     
 }
