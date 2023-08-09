@@ -41,23 +41,10 @@ export function signWithKakaoLogin(user:UserType) {
 }
 export function addLetters(userId:number,letter:LetterState) {
     return get(ref(database, `letter/${userId}`)).then((snapshot) => {
-        console.log('snpa', snapshot);
-        if (!snapshot.exists()) {
-            return set(ref(database, `letter/${userId}`), {
+        console.log('snpa',snapshot);
+        return set(ref(database, `letter/${userId}/${letter.id}`), {
                 ...letter
-            }).catch((error) => console.error(error))
-        }    
-        // } else {
-        //     interface updateObj{
-        //         [key:string] : any[]
-        //     }
-        //     const updates:updateObj = {}
-        //     updates[`letter/${userId}`] = {
-        //        ...snapshot.val(), letter
-        //     }
-            
-        //     update(ref(database),updates)
-        // }
+        }).catch((error) => console.error(error))
     })
     
 }

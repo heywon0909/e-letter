@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface LetterState {
     id:number,
-    From: string,
+    from: string,
     to: string,
     content: string,
-    bg:string
+    bg?:string
 }
 
 interface LettersType {
