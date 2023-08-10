@@ -5,27 +5,32 @@ import sample3 from '/assets/img/sample3.jpg';
 import sample4 from '/assets/img/sample4.jpg';
 import sample5 from '/assets/img/sample5.jpg';
 import sample6 from '/assets/img/sample6.jpg';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const randomNumber = () => (Math.floor(Math.random() * 5) + 1);
 
 export default function CardSelect() {
     const randomNum = useRef(0);
+    const [url, setUrl] = useState('');
     const imgArr = [sample1, sample2, sample3, sample4, sample5, sample6];
-    randomNum.current = randomNumber();
-    console.log('num1', randomNum.current);
+    randomNum.current = useMemo(() => randomNumber(), []);
+    
     const navigate = useNavigate();
-    const goTemplate = useCallback((id: number,num:number) => {
-        console.log('num2', num);
-        navigate(`/card/${id}/${num}`);
-    },[navigate])
+
+    useEffect(() => {
+        navigate(url);
+    }, [navigate, url]);
+
+    const goTemplate = useCallback((id: number) => {
+        setUrl(`/card/${id}/${randomNum.current+1}`);
+    },[])
 
     return (
        <section className='w-full md:h-full flex flex-col justify-center items-center'>  
         <h2 className='font-mono mt-2 text-base'>편지지 양식을 골라주세요.</h2>
         <div className='md:w-3/4 w-11/12 flex justify-center space-y-3'>
             <ul className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 my-4 h-70 w-full'>
-               <article className="overflow-hidden rounded-lg shadow-lg h-72 p-4 transition-all hover:scale-90" onClick={()=>goTemplate(1,randomNum.current)} style={{backgroundImage:`url(${imgArr[randomNum.current]})`}}>
+               <article className="overflow-hidden rounded-lg shadow-lg h-72 p-4 transition-all hover:scale-90" onClick={()=>goTemplate(1)} style={{backgroundImage:`url(${imgArr[randomNum.current]})`}}>
                 <div className="flex flex-col items-center justify-center bg-white h-full opacity-70">
                     <h1 className="text-sm p-4 font-semibold">
                         ooo에게
@@ -39,7 +44,7 @@ export default function CardSelect() {
                 
 
                 </article>
-                <article className="overflow-hidden rounded-lg shadow-lg h-72 transition-all hover:scale-90" onClick={()=>goTemplate(2,randomNum.current)}>
+                <article className="overflow-hidden rounded-lg shadow-lg h-72 transition-all hover:scale-90" onClick={()=>goTemplate(2)}>
 
                 <a>
                     <img alt="Placeholder" className="block h-3/5 w-full" src={imgArr[randomNum.current]} />
@@ -63,9 +68,9 @@ export default function CardSelect() {
                 </div>
 
                 </article>
-                <article className="overflow-hidden rounded-lg shadow-lg h-72 transition-all hover:scale-90" onClick={()=>goTemplate(3,randomNum.current)}>
+                <article className="overflow-hidden rounded-lg shadow-lg h-72 transition-all hover:scale-90" onClick={()=>goTemplate(3)}>
 
-                <a href="#" className='w-full flex justify-center'>
+                <a className='w-full flex justify-center'>
                     <img alt="Placeholder" className="block rounded-full w-28 h-28" src={imgArr[randomNum.current]}   />
                 </a>
 
