@@ -21,13 +21,13 @@ export default function CardFinishedVersion({cardId,uid,letter}:Props) {
     if(cardId==='2') 
     return (
         <>
-         <Card_2/>   
+         <Card_2 isComplete={true} letter={letter}/>   
         </>
         );
     if(cardId==='3') 
     return (
         <>
-         <Card_3/>   
+         <Card_3 isComplete={true} letter={letter}/>   
         </>
     );
 }

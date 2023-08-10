@@ -85,12 +85,12 @@ export default function CardTemplate({cardId}:Props) {
         </>);
     else if (cardId === '2') return (
         <>
-            <Card_2 />
+            <Card_2 AddLetter={AddLetter} letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '3') return  (
         <>
-            <Card_3 />
+            <Card_3 AddLetter={AddLetter} letter={letter} isComplete={false}/>
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else return(<div></div>)
