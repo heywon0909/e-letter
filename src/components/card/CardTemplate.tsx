@@ -87,18 +87,12 @@ export default function CardTemplate({cardId,cardImgNum}:Props) {
         AddLetter({ content: event.target.value });
     }, [AddLetter]);
 
-    const setToBg = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const setToBg = useCallback((url: string) => {
         
         if (AddLetter == null) return;
-        const reader = new FileReader();
-        if (event.target.files && event.target.files[0]) {
-            const files = event.target.files;
-
-            reader.onload = function (e) {
-                AddLetter({ bg: e.target?.result as string });
-            }
-            reader.readAsDataURL(files[0]);
-        }
+    
+        AddLetter({ bg: url });
+       
        
     }, [AddLetter]);
     

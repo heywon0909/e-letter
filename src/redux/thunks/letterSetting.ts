@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addLetters, getLetters } from '../../firebase/firebase';
+import { addLetters, getLetters } from '../../api/firebase/firebase';
 import { LetterState, createLetter } from '../slices/letterSlice';
 
 export const addLetterApi = createAsyncThunk('letter/createLetter',

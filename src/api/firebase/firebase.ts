@@ -1,9 +1,9 @@
-import { LetterState } from './../redux/slices/letterSlice';
+import { LetterState } from '../../redux/slices/letterSlice';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import {get, getDatabase, ref, set, update} from "firebase/database"
-import { UserType } from '../redux/slices/userSlice';
+import { UserType } from '../../redux/slices/userSlice';
 
 
 // TODO: Add SDKs for Firebase products that you want to use

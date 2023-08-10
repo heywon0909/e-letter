@@ -1,3 +1,4 @@
+import ShareBut from '@components/ShareBut';
 import { LetterState } from '../../redux/slices/letterSlice';
 import Card_1 from './Card_1';
 import Card_2 from './Card_2';
@@ -15,7 +16,8 @@ export default function CardFinishedVersion({cardId,uid,letter}:Props) {
     if(cardId==='1') 
     return (
         <>
-            <Card_1 isComplete={true} letter={letter} />   
+            <Card_1 isComplete={true} letter={letter} />
+            <ShareBut/>
         </>
         );
     if(cardId==='2') 
