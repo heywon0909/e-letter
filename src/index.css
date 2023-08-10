@@ -35,3 +35,28 @@
 #bouncing-loader > div:nth-child(3) {
   animation-delay: 0.4s;
 }
+
+#file_input[type="file"]{
+  position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+#filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #272727;
+    cursor: pointer;
+    height: 35px;
+    margin-left: 10px;
+}
+#filebox label:hover {
+    background-color:#525053;
+}
+img{
+    object-fit: cover;
+}

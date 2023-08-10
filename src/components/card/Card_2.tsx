@@ -11,7 +11,7 @@ export default function Card_2({ setToName,setToContent, isComplete, letter }: P
         <article className="w-full overflow-hidden rounded-lg shadow-lg h-4/6 max-h-min">
 
                 <a href="#">
-                    <img alt="Placeholder" className="block h-3/5 w-full max-h-fit" src="https://picsum.photos/600/400/?random" />
+                    <img alt="Placeholder" className="block h-3/5 w-full max-h-fit" src={letter?.bg} />
                 </a>
 
                 <div className="flex items-center w-full justify-between leading-tight p-2 md:p-4">

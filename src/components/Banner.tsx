@@ -1,5 +1,5 @@
 
-import letter from '../../public/img/letter.png'
+import letter from '/assets/img/letter.png'
 export default function Banner() {
     return (
         <div id="banner" className='w-full flex flex-col justify-center items-center animate-fadeIn'>

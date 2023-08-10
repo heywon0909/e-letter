@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "template":"url('https://picsum.photos/600/400/?random')"
+        "template":"url('./public/img/sample.jpg')"
       }
     },
   },

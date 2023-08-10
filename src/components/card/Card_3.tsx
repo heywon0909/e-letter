@@ -10,8 +10,8 @@ export default function Card_3({ isComplete, setToName,setToContent, letter }: P
     return (
        <article className="w-full overflow-hidden rounded-lg shadow-lg h-4/6">
 
-                <a href="#" className='w-full flex justify-center'>
-                    <img alt="Placeholder" className="block rounded-full w-28 h-28" src="https://picsum.photos/600/400/?random" />
+                <a className='w-full flex justify-center'>
+                    <img alt="Placeholder" className="block rounded-full w-28 h-28" src={letter?.bg ? letter.bg : "https://picsum.photos/600/400/?random"} />
                 </a>
 
                 <div className="flex items-center justify-between leading-tight p-2 md:p-4 w-full">

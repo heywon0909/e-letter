@@ -24,7 +24,7 @@ const paths: RouteObject[] = [
         element: <LoginPage />,
     }, 
     {
-        path: '/card/:cardId',
+        path: '/card/:cardId/:cardImgNum',
         element: <Card />,
     },
     {

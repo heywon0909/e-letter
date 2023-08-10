@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
+    "baseUrl": ".",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -19,7 +20,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@/*": ["src/*"],
+      "@img/*":["public/img/*"]
+    }
   },
   "include": ["src", "postcss.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]

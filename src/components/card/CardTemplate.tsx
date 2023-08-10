@@ -10,12 +10,14 @@ import { addLetterApi } from '../../redux/thunks/letterSetting';
 import { UserType } from '../../redux/slices/userSlice';
 import { useThunkDispatch } from '../../redux/hooks';
 import { useNavigate } from 'react-router';
+import BgUploadBut from '../BgUploadBut';
 interface Props{
     cardId: string;
+    cardImgNum: string;
 }
 
 
-export default function CardTemplate({cardId}:Props) {
+export default function CardTemplate({cardId,cardImgNum}:Props) {
     const [letter, setLetter] = useState<Partial<LetterState>>();
     const dispatch = useThunkDispatch();
 
@@ -31,9 +33,9 @@ export default function CardTemplate({cardId}:Props) {
     
     
     useEffect(() => {
-        if (!cardId) return;
-        AddLetter({ type: parseInt(cardId) });
-    },[AddLetter, cardId])
+        if (!cardId && !cardImgNum) return;
+        AddLetter({ type: parseInt(cardId),bg:`/assets/img/sample${cardImgNum}.jpg` });
+    },[AddLetter, cardId, cardImgNum])
 
 
     
@@ -84,21 +86,39 @@ export default function CardTemplate({cardId}:Props) {
         if (AddLetter==null) return;
         AddLetter({ content: event.target.value });
     }, [AddLetter]);
+
+    const setToBg = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        
+        if (AddLetter == null) return;
+        const reader = new FileReader();
+        if (event.target.files && event.target.files[0]) {
+            const files = event.target.files;
+
+            reader.onload = function (e) {
+                AddLetter({ bg: e.target?.result as string });
+            }
+            reader.readAsDataURL(files[0]);
+        }
+       
+    }, [AddLetter]);
     
 
     if (!cardId) return (<div></div>);
     if (cardId === '1') return (
         <>
+            <BgUploadBut setToBg={setToBg} />
             <Card_1 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '2') return (
         <>
+            <BgUploadBut  setToBg={setToBg}/>
             <Card_2 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '3') return  (
         <>
+            <BgUploadBut  setToBg={setToBg}/>
             <Card_3 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false}/>
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
