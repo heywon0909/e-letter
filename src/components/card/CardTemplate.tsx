@@ -23,9 +23,7 @@ export default function CardTemplate({cardId}:Props) {
    
     const AddLetter = useCallback((letter: Partial<LetterState>) => {   
         if (letter === undefined) return;
-
         setLetter(prev => {
-            console.log('prev',prev,letter)
             return ({ ...prev, ...letter });
         });
     }, []);
@@ -64,7 +62,7 @@ export default function CardTemplate({cardId}:Props) {
         }
 
         
-        console.log('타니',newLetter)
+      
         await dispatch(addLetterApi({ userId: user.id, letter: newLetter as LetterState })).then(result => {
             console.log('result', result);
             const { type } = result;
@@ -75,22 +73,33 @@ export default function CardTemplate({cardId}:Props) {
             
            
         })
-    }, [letter,dispatch,navigate]);
+    }, [letter, dispatch, navigate]);
+    
+
+    const setToName = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        if (AddLetter==null) return;
+        AddLetter({ to: event.target.value });
+    }, [AddLetter]);
+    const setToContent = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        if (AddLetter==null) return;
+        AddLetter({ content: event.target.value });
+    }, [AddLetter]);
+    
 
     if (!cardId) return (<div></div>);
     if (cardId === '1') return (
         <>
-            <Card_1 AddLetter={AddLetter} letter={letter} isComplete={false} />
+            <Card_1 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '2') return (
         <>
-            <Card_2 AddLetter={AddLetter} letter={letter} isComplete={false} />
+            <Card_2 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '3') return  (
         <>
-            <Card_3 AddLetter={AddLetter} letter={letter} isComplete={false}/>
+            <Card_3 setToName={setToName} setToContent={setToContent}  letter={letter} isComplete={false}/>
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else return(<div></div>)

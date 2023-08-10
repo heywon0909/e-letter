@@ -1,20 +1,12 @@
-import { useCallback } from 'react';
 import { LetterState } from '../../redux/slices/letterSlice';
 
 interface Props{
     isComplete: boolean,
-    AddLetter?: (letter: Partial<LetterState>) => void,
+    setToName?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    setToContent?:(e: React.ChangeEvent<HTMLTextAreaElement>) => void,
     letter?:Partial<LetterState>
 }
-export default function Card_1({ AddLetter, letter,isComplete }: Props) {
-    const setToName = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        if (AddLetter==null) return;
-        AddLetter({ to: event.target.value });
-    }, [AddLetter]);
-    const setToContent = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        if (AddLetter==null) return;
-        AddLetter({ content: event.target.value });
-    }, [AddLetter]);
+export default function Card_1({ setToName,setToContent, letter,isComplete }: Props) {
     return (
         <article className="w-full overflow-hidden rounded-lg shadow-lg p-4 h-4/6 bg-cover" style={{ backgroundImage: `${letter?.bg ? `url(${letter.bg})`: `url(https://picsum.photos/600/400/?random)`}` }}>
             <div className="flex flex-col items-center justify-between  h-full">
