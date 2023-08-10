@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage';
 import CardSelect from '../pages/CardSelect';
 import Card from '../pages/Card';
 import LoginPage from '../pages/LoginPage';
+import CardComplete from '../pages/CardComplete';
 
 const paths: RouteObject[] = [
   {
@@ -25,7 +26,11 @@ const paths: RouteObject[] = [
     {
         path: '/card/:cardId',
         element: <Card />,
-    }  
+    },
+    {
+      path: '/card/complete/:cardId/:uid',
+      element:<CardComplete/>
+    }
     ],
   },
 ];

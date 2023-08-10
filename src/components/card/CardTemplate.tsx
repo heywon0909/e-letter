@@ -1,5 +1,5 @@
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import EditBut from '../EditBut';
 import { v4 as uuidv4 } from 'uuid';
 import Card_1 from './Card_1';
@@ -9,6 +9,7 @@ import { LetterState } from '../../redux/slices/letterSlice';
 import { addLetterApi } from '../../redux/thunks/letterSetting';
 import { UserType } from '../../redux/slices/userSlice';
 import { useThunkDispatch } from '../../redux/hooks';
+import { useNavigate } from 'react-router';
 interface Props{
     cardId: string;
 }
@@ -18,17 +19,30 @@ export default function CardTemplate({cardId}:Props) {
     const [letter, setLetter] = useState<Partial<LetterState>>();
     const dispatch = useThunkDispatch();
 
-    const AddLetter = useCallback((letter: Partial<LetterState>) => {
+    const navigate = useNavigate();
+   
+    const AddLetter = useCallback((letter: Partial<LetterState>) => {   
         if (letter === undefined) return;
-        console.log('letter',letter)
+
         setLetter(prev => {
             console.log('prev',prev,letter)
             return ({ ...prev, ...letter });
         });
     }, []);
+    
+    
+    
+    useEffect(() => {
+        if (!cardId) return;
+        AddLetter({ type: parseInt(cardId) });
+    },[AddLetter, cardId])
+
+
+    
 
     const OnAddLetter = useCallback(async (user:UserType) => {
         if (!user) return;
+    
         const keys: (keyof LetterState)[] = ['bg','content','id','from','to'];
         const newLetter: Partial<LetterState> = { ...letter };
         
@@ -37,7 +51,8 @@ export default function CardTemplate({cardId}:Props) {
             if (newLetter[`${key}`]==null) {
                 console.log('key', key);
                 switch (key) {
-                    case 'id': newLetter.id = uuidv4();break;
+                    case 'id': newLetter.id = uuidv4() as unknown as number;
+                        break;
                     case 'from': newLetter.from = user.name; break;
                     case 'to':
                     case 'content': console.log('입력필수'); break;
@@ -50,13 +65,22 @@ export default function CardTemplate({cardId}:Props) {
 
         
         console.log('타니',newLetter)
-        dispatch(addLetterApi({ userId: user.id, letter: newLetter as LetterState }));
-    }, [letter,dispatch]);
+        await dispatch(addLetterApi({ userId: user.id, letter: newLetter as LetterState })).then(result => {
+            console.log('result', result);
+            const { type } = result;
+            if (type.includes('fulfilled')) {
+                const url = `/card/complete/${newLetter.type}/${newLetter.id}`
+                navigate(url);
+            }
+            
+           
+        })
+    }, [letter,dispatch,navigate]);
 
     if (!cardId) return (<div></div>);
     if (cardId === '1') return (
         <>
-            <Card_1 AddLetter={AddLetter} letter={letter} />
+            <Card_1 AddLetter={AddLetter} letter={letter} isComplete={false} />
             <EditBut onAddLetter={OnAddLetter} letter={letter} />
         </>);
     else if (cardId === '2') return (

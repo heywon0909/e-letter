@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import {get, getDatabase, ref, set, update} from "firebase/database"
 import { UserType } from '../redux/slices/userSlice';
-import { LetterState } from '../redux/slices/letterSlice';
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -47,4 +47,10 @@ export function addLetters(userId:number,letter:LetterState) {
         }).catch((error) => console.error(error))
     })
     
+}
+export function getLetters(userId: number,uid:string) {
+    return get(ref(database, `letter/${userId}/${uid}`)).then((snapshot) => {
+        console.log('snpa', snapshot.val());
+        return snapshot.val();
+    })
 }
