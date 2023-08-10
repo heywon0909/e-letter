@@ -24,7 +24,7 @@ export default function Card_2({ AddLetter, isComplete, letter }: Props) {
 
                 <div className="flex items-center w-full justify-between leading-tight p-2 md:p-4">
                 <h1 className="text-sm w-full">
-                    {!isComplete && <input type='text' className="text-black focus:outline-none" defaultValue={letter?.to || ''} onInput={setToName} placeholder='00에게' />}
+                    {!isComplete && <input type='text' className="text-black" defaultValue={letter?.to || ''} onInput={setToName} placeholder='00에게' />}
                     {isComplete && <p className="text-black focus:outline-none">{letter?.to || ''}</p>}
                     </h1>
                 </div>
