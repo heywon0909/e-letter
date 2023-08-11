@@ -34,13 +34,13 @@ export const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(kakaoUserLogin.pending, (state, action) => {
-                console.log(action.type);
+                console.log(action.type,state);
             }) 
             .addCase(kakaoUserLogin.fulfilled, (state, action) => {
-                console.log(action.type);
+                console.log(action.type,state);
             })
             .addCase(kakaoUserLogin.rejected, (state, action) => {
-                console.log(action.type);
+                console.log(action.type,state);
             })
     }
 });
