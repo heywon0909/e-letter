@@ -17,8 +17,7 @@ For E-letter 📑,
 - Can only be shared through Kakao Talk 📩
 - Use through Kakao Talk login
 
-
-  
+ 
 ### Development
 
 
