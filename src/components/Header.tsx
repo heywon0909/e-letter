@@ -18,7 +18,7 @@ export default function Header() {
     
 
     return (
-        <header className='w-full text-3xl p-2 flex  justify-between'>
+        <header className='w-full text-3xl p-2 flex  justify-between fixed bg-white z-10'>
             <Link className='underline font-mono' to='/'>e-letter</Link>
             {user && 
                 (<div id="popOver">
