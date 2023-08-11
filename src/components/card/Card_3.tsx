@@ -23,7 +23,7 @@ export default function Card_3({ isComplete, setToName,setToContent, letter }: P
 
                 <div className="flex items-center justify-between leading-none p-2 md:p-4 h-full">
                       {!isComplete && <textarea className="w-full p-2 bg-transparent outline-none placeholder-gray-600 resize-none h-full"  placeholder="여기부터 편지를 써주세요" defaultValue={letter?.content || ''} onInput={setToContent}></textarea>}
-                    {isComplete &&  <div className="w-full p-2 bg-transparent outline-none placeholder-gray-600 resize-none h-full"  placeholder="여기부터 편지를 써주세요" >{letter?.content || ''}</div>}   
+                    {isComplete &&  <textarea className="w-full p-2 bg-transparent outline-none placeholder-gray-600 resize-none h-full"  placeholder="여기부터 편지를 써주세요" defaultValue={letter?.content || ''} readOnly></textarea>}   
                 </div>
 
                </article>

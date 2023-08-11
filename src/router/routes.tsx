@@ -5,6 +5,7 @@ import CardSelect from '../pages/CardSelect';
 import Card from '../pages/Card';
 import LoginPage from '../pages/LoginPage';
 import CardComplete from '../pages/CardComplete';
+import AuthRoute from '../components/AuthRoute';
 
 const paths: RouteObject[] = [
   {
@@ -17,7 +18,9 @@ const paths: RouteObject[] = [
     },
     {
          path: '/select/card',
-        element: <CardSelect />,
+      element: (<AuthRoute>
+                <CardSelect />
+              </AuthRoute>),
     },
     {
         path: '/login/oauth',
@@ -25,11 +28,17 @@ const paths: RouteObject[] = [
     }, 
     {
         path: '/card/:cardId/:cardImgNum',
-        element: <Card />,
+      element: (<AuthRoute>
+                <Card />
+                </AuthRoute>),
     },
     {
       path: '/card/complete/:cardId/:uid',
-      element:<CardComplete/>
+      element:(
+        <AuthRoute>
+          <CardComplete />
+        </AuthRoute>  
+        )
     }
     ],
   },

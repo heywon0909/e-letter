@@ -1,3 +1,4 @@
+import { RiKakaoTalkFill } from 'react-icons/ri';
 
 export default function ShareBut() {
    
@@ -74,8 +75,8 @@ export default function ShareBut() {
     }
 
     return (
-        <a id="kakaotalk-sharing-btn" onClick={shareMessage} className='w-full flex rounded-md justify-center bg-purple-600 hover:bg-purple-800 text-white p-2'>
-            공유하기
+        <a id="kakaotalk-sharing-btn" onClick={shareMessage} className='w-40 flex rounded-md justify-center items-center bg-yellow-400 hover:bg-yellow-500 text-white h-10 mt-5'>
+        <RiKakaoTalkFill size={30} />공유하기
         </a>
     );
 }

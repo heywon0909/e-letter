@@ -1,22 +1,24 @@
 import { useParams } from 'react-router';
 import CardFinishedVersion from '../components/card/CardFinishedVersion';
 import { useAppSelector, useThunkDispatch } from '../redux/hooks';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { getLetterApi } from '../redux/thunks/letterSetting';
-// import { LetterState } from '../redux/slices/letterSlice';
 
 export default function CardComplete() {
     const { cardId, uid } = useParams();
     const dispatch = useThunkDispatch();
     const user = useAppSelector((state) => state.user.user);
     const letters = useAppSelector((state) => state.letters.letters);
-    // const [letter, setLetter] = useState<LetterState>();
+  
+    const params = useMemo(() => {
+        if (!user || !uid) return;
+        return ({ userId: user?.id as number, uid: uid as string })
+    }, [uid, user]);
+    
 
     useEffect(() => {
-        if (!user) return;
-        const result =dispatch(getLetterApi({ userId:user.id as number, uid:uid as string }))
-        console.log('result', result);
-    }, [dispatch, uid, user]);
+       dispatch(getLetterApi(params!));
+    }, [dispatch, params]);
 
     return (
         <section className='w-full h-full flex flex-col justify-center items-center'>

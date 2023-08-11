@@ -53,7 +53,7 @@ export default function CardTemplate({cardId,cardImgNum}:Props) {
                 switch (key) {
                     case 'id': newLetter.id = uuidv4() as unknown as number;
                         break;
-                    case 'from': newLetter.from = user.name; break;
+                    case 'from': newLetter.from = user; break;
                     case 'to':
                     case 'content': console.log('입력필수'); break;
                     case 'bg': newLetter.bg = ''; break;
@@ -70,7 +70,7 @@ export default function CardTemplate({cardId,cardImgNum}:Props) {
             const { type } = result;
             if (type.includes('fulfilled')) {
                 const url = `/card/complete/${newLetter.type}/${newLetter.id}`
-                navigate(url);
+                navigate(url,{replace:true});
             }
             
            

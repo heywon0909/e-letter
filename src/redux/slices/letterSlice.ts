@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { UserType } from './userSlice';
 
 export interface LetterState {
     type:number,
     id:number,
-    from: string,
+    from: UserType,
     to: string,
     content: string,
     bg?:string

@@ -4,7 +4,8 @@ import { kakaoUserLogin } from '../thunks/kakaoUserSetting';
 export interface UserType {
     id:number,
     name: string,
-    image:string,
+    image: string,
+    token:string,
     email?: string,
     gender?:string
 }
@@ -20,6 +21,11 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
+            const user = action.payload;
+            state.user = user;
+            return state;
+        },
+        outUser: (state, action) => {
             const user = action.payload;
             state.user = user;
             return state;
@@ -39,5 +45,5 @@ export const userSlice = createSlice({
     }
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser,outUser } = userSlice.actions;
 export default userSlice.reducer;

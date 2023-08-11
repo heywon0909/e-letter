@@ -2,7 +2,7 @@ import { LetterState } from '../../redux/slices/letterSlice';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
-import {get, getDatabase, ref, set, update} from "firebase/database"
+import {get, getDatabase, ref, set} from "firebase/database"
 import { UserType } from '../../redux/slices/userSlice';
 
 
@@ -39,17 +39,32 @@ export function signWithKakaoLogin(user:UserType) {
     })
     
 }
-export function addLetters(userId:number,letter:LetterState) {
+export function addUserLetter(userId:number,letter:LetterState) {
     return get(ref(database, `letter/${userId}`)).then((snapshot) => {
         console.log('snpa',snapshot);
         return set(ref(database, `letter/${userId}/${letter.id}`), {
                 ...letter
         }).catch((error) => console.error(error))
     })
-    
+}
+
+export function addLetter(letter: LetterState) {
+    return get(ref(database, `letter/${letter.id}`)).then((snapshot) => {
+        console.log('snpa',snapshot);
+        return set(ref(database, `letters/${letter.id}`), {
+                ...letter
+        }).catch((error) => console.error(error))
+    })
 }
 export function getLetters(userId: number,uid:string) {
     return get(ref(database, `letter/${userId}/${uid}`)).then((snapshot) => {
+        console.log('snpa', snapshot.val());
+        return snapshot.val();
+    })
+}
+
+export function getCompletedLetter(uid:string) {
+    return get(ref(database, `letters/${uid}`)).then((snapshot) => {
         console.log('snpa', snapshot.val());
         return snapshot.val();
     })
