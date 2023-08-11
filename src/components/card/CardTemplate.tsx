@@ -34,7 +34,7 @@ export default function CardTemplate({cardId,cardImgNum}:Props) {
     
     useEffect(() => {
         if (!cardId && !cardImgNum) return;
-        AddLetter({ type: parseInt(cardId),bg:`/assets/img/sample${cardImgNum}.jpg` });
+        AddLetter({ type: parseInt(cardId),bg:`/e-letter/assets/img/sample${cardImgNum}.jpg` });
     },[AddLetter, cardId, cardImgNum])
 
 
