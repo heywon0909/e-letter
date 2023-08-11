@@ -12,7 +12,7 @@ export default function StartBut() {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
             Kakao.Auth.authorize({
-                redirectUri: 'http://127.0.0.1:5173/login/oauth',
+                redirectUri: 'http://127.0.0.1:5173/e-letter/login/oauth',
                 scope:"profile_nickname,account_email,gender,profile_image"
             });
         }
