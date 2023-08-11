@@ -7,10 +7,10 @@ export const addLetterApi = createAsyncThunk('letter/createLetter',
         const { userId, letter } = value;
         let result = null;
         try {
-            console.log('api')
+           
             result = await addUserLetter(userId, letter);
             await addLetter(letter);
-            // thunkApi.dispatch(createLetter(letter));
+            
 
         } catch (error) {
             result = error;

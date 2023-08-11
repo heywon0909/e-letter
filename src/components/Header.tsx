@@ -1,6 +1,7 @@
 import {  useCallback, useState } from 'react';
 import { useAppSelector, useThunkDispatch } from '../redux/hooks';
 import { kakaoUserLogout } from '@/redux/thunks/kakaoUserSetting';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     const user = useAppSelector((state) => state.user.user);
@@ -11,14 +12,14 @@ export default function Header() {
     
     const onLogOutUser = useCallback(() => {
         if (!user) return;
-        console.log('user',user)
+        
         dispatch(kakaoUserLogout(user));
     }, [dispatch, user]);
     
 
     return (
         <header className='w-full text-3xl p-2 flex  justify-between'>
-            <div className='underline font-mono'>e-letter</div>
+            <Link className='underline font-mono' to='/'>e-letter</Link>
             {user && 
                 (<div id="popOver">
                     <button className='w-32 flex shadow-md justify-center items-center hover:shadow-lg h-10' type='button' id='userBut' onClick={handlePopOver}>
