@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
-import { outUser, setUser } from '../slices/userSlice';
+import { UserType, outUser, setUser } from '../slices/userSlice';
 import { signWithKakaoLogin } from '../../api/firebase/firebase';
 
 export const kakaoUserLogin = createAsyncThunk('user/setUser',
@@ -31,7 +31,7 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
                     email: kakao_account?.email,
                     gender: kakao_account?.gender
                 }
-                
+
 
                 thunkApi.dispatch(setUser(user));
                 signWithKakaoLogin(user);
@@ -40,14 +40,14 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
     })
 
  export const kakaoUserLogout = createAsyncThunk('user/outUser',
-    async (access_token:string,thunkApi) => {
+    async (user:UserType,thunkApi) => {
         return axios.post(`https://kapi.kakao.com/v1/user/logout`, {
             'target_id_type': 'user_id',
             'target_id': user.id
         }, {
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded',
-                'Authorization':`Bearer ${access_token}`
+                'Authorization':`Bearer ${user.token}`
                 
             }
         }).then(result => {

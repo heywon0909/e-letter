@@ -11,7 +11,8 @@ export default function Header() {
     
     const onLogOutUser = useCallback(() => {
         if (!user) return;
-        dispatch(kakaoUserLogout(user?.token));
+        console.log('user',user)
+        dispatch(kakaoUserLogout(user));
     }, [dispatch, user]);
     
 

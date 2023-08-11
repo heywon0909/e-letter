@@ -26,7 +26,7 @@ export default function CardSelect() {
     },[])
 
     return (
-       <section className='w-full md:h-full flex flex-col justify-center items-center'>  
+       <section className='w-full md:h-4/5 h-full flex flex-col justify-center items-center'>  
         <h2 className='font-mono mt-2 text-base'>편지지 양식을 골라주세요.</h2>
         <div className='md:w-3/4 w-11/12 flex justify-center space-y-3'>
             <ul className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 my-4 h-70 w-full'>
