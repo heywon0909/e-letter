@@ -10,7 +10,7 @@
     "set-env": "set VITE_KAKAO_REDIRECT_URI=https://heywon0909.github.io/e-letter/login/oauth",
     "clear-cache": "rmdir /s /q node_modules\\.cache",
     "preview": "vite preview",
-    "postbuild": "cp /Y dist\\index.html dist\\404.html",
+    "postbuild":"cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
