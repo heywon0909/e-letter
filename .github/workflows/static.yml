@@ -57,7 +57,7 @@ jobs:
           echo "VITE_CLOUDINARY_KEY=${VITE_CLOUDINARY_KEY}" >> .env
           echo "VITE_UPLOAD_PRESET=${VITE_UPLOAD_PRESET}" >> .env
           echo "VITE_CRYPTOJS_SECRET_KEY=${VITE_CRYPTOJS_SECRET_KEY}" >> .env
-        CI: false
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
