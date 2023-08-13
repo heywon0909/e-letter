@@ -12,7 +12,7 @@ export default function StartBut() {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
             Kakao.Auth.authorize({
-                redirectUri: 'https://heywon0909.github.io/e-letter/login/oauth',
+                redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
                 scope:"profile_nickname,account_email,gender,profile_image"
             });
         }
