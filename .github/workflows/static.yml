@@ -43,22 +43,14 @@ jobs:
         # env:
         #   CI: false
       - name: Set Environment Variables
-        env:
-          VITE_KAKAO_JAVASCRIPT_KEY: ${{ secrets.VITE_KAKAO_JAVASCRIPT_KEY }}
-          VITE_KAKAO_REST_API_KEY: ${{ secrets.VITE_KAKAO_REST_API_KEY }}
-          VITE_KAKAO_REDIRECT_URI: ${{ secrets.VITE_KAKAO_REDIRECT_URI }}
-          VITE_CLOUDINARY_URL: ${{ secrets.VITE_CLOUDINARY_URL }}
-          VITE_CLOUDINARY_KEY: ${{ secrets.VITE_CLOUDINARY_KEY }}
-          VITE_UPLOAD_PRESET: ${{ secrets.VITE_UPLOAD_PRESET }}
-          VITE_CRYPTOJS_SECRET_KEY: ${{ secrets.VITE_CRYPTOJS_SECRET_KEY }}
         run: |
-          echo "VITE_KAKAO_JAVASCRIPT_KEY=${VITE_KAKAO_JAVASCRIPT_KEY}" >> .env
-          echo "VITE_KAKAO_REST_API_KEY=${VITE_KAKAO_REST_API_KEY}" >> .env
-          echo "VITE_KAKAO_REDIRECT_URI=${VITE_KAKAO_REDIRECT_URI}" >> .env
-          echo "VITE_CLOUDINARY_URL=${VITE_CLOUDINARY_URL}" >> .env
-          echo "VITE_CLOUDINARY_KEY=${VITE_CLOUDINARY_KEY}" >> .env
-          echo "VITE_UPLOAD_PRESET=${VITE_UPLOAD_PRESET}" >> .env
-          echo "VITE_CRYPTOJS_SECRET_KEY=${VITE_CRYPTOJS_SECRET_KEY}" >> .env  
+          echo "VITE_KAKAO_JAVASCRIPT_KEY=${{secrets.VITE_KAKAO_JAVASCRIPT_KEY}}" >> $GITHUB_ENV
+          echo "VITE_KAKAO_REST_API_KEY=${{secrets.VITE_KAKAO_REST_API_KEY}}" >> $GITHUB_ENV
+          echo "VITE_KAKAO_REDIRECT_URI=${{secrets.VITE_KAKAO_REDIRECT_URI}}" >> $GITHUB_ENV
+          echo "VITE_CLOUDINARY_URL=${{secrets.VITE_CLOUDINARY_URL}}" >> $GITHUB_ENV
+          echo "VITE_CLOUDINARY_KEY=${{secrets.VITE_CLOUDINARY_KEY}}" >> $GITHUB_ENV
+          echo "VITE_UPLOAD_PRESET=${{secrets.VITE_UPLOAD_PRESET}}" >> $GITHUB_ENV
+          echo "VITE_CRYPTOJS_SECRET_KEY=${{secrets.VITE_CRYPTOJS_SECRET_KEY}}" >> $GITHUB_ENV 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
