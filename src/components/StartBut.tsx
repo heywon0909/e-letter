@@ -9,8 +9,10 @@ export default function StartBut() {
         if (user) {
             navigate('/select/card')
         } else {
+             console.log('import.meta.env.VITE_KAKAO_REDIRECT_URI',import.meta.env.VITE_KAKAO_REDIRECT_URI)
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
+           
             Kakao.Auth.authorize({
                 redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
                 scope:"profile_nickname,account_email,gender,profile_image"
