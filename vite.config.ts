@@ -6,15 +6,6 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   base: '/e-letter/',
-  define: {
-    'process.env.VITE_KAKAO_JAVASCRIPT_KEY': JSON.stringify(process.env.VITE_KAKAO_JAVASCRIPT_KEY),
-    'process.env.VITE_KAKAO_REST_API_KEY': JSON.stringify(process.env.VITE_KAKAO_REST_API_KEY),
-    'process.env.VITE_KAKAO_REDIRECT_URI': JSON.stringify(process.env.VITE_KAKAO_REDIRECT_URI),
-    'process.env.VITE_CLOUDINARY_URL': JSON.stringify(process.env.VITE_CLOUDINARY_URL),
-    'process.env.VITE_CLOUDINARY_KEY': JSON.stringify(process.env.VITE_CLOUDINARY_KEY),
-    'process.env.VITE_UPLOAD_PRESET': JSON.stringify(process.env.VITE_UPLOAD_PRESET),
-    'process.env.VITE_CRYPTOJS_SECRET_KEY': JSON.stringify(process.env.VITE_CRYPTOJS_SECRET_KEY),
-  },
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
