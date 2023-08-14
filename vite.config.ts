@@ -6,18 +6,19 @@ import path from 'path';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(({command, mode })=>{
-  const env = loadEnv(mode, process.cwd(), '')
+  const env = loadEnv(mode, process.cwd(), '');
+  console.log('env', env);
   return {
   plugins: [react()],
   base: '/e-letter/',
   define: {
-    VITE_KAKAO_JAVASCRIPT_KEY: JSON.stringify(env.VITE_KAKAO_JAVASCRIPT_KEY),
-    VITE_KAKAO_REST_API_KEY: JSON.stringify(env.VITE_KAKAO_REST_API_KEY),
-    VITE_KAKAO_REDIRECT_URI: JSON.stringify(env.VITE_KAKAO_REDIRECT_URI),
-    VITE_CLOUDINARY_URL: JSON.stringify(env.VITE_CLOUDINARY_URL),
-    VITE_CLOUDINARY_KEY: JSON.stringify(env.VITE_CLOUDINARY_KEY),
-    VITE_UPLOAD_PRESET: JSON.stringify(env.VITE_UPLOAD_PRESET),
-    VITE_CRYPTOJS_SECRET_KEY: JSON.stringify(env.VITE_CRYPTOJS_SECRET_KEY),
+    KAKAO_JAVASCRIPT_KEY: JSON.stringify(env.KAKAO_JAVASCRIPT_KEY),
+    KAKAO_REST_API_KEY: JSON.stringify(env.KAKAO_REST_API_KEY),
+    KAKAO_REDIRECT_URI: JSON.stringify(env.KAKAO_REDIRECT_URI),
+    CLOUDINARY_URL: JSON.stringify(env.CLOUDINARY_URL),
+    CLOUDINARY_KEY: JSON.stringify(env.CLOUDINARY_KEY),
+    UPLOAD_PRESET: JSON.stringify(env.UPLOAD_PRESET),
+    CRYPTOJS_SECRET_KEY: JSON.stringify(env.CRYPTOJS_SECRET_KEY),
   },
   resolve: {
     alias: [
