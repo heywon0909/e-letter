@@ -12,13 +12,13 @@ export default defineConfig(({command, mode })=>{
   plugins: [react()],
   base: '/e-letter/',
   define: {
-    KAKAO_JAVASCRIPT_KEY: JSON.stringify(env.KAKAO_JAVASCRIPT_KEY),
-    KAKAO_REST_API_KEY: JSON.stringify(env.KAKAO_REST_API_KEY),
-    KAKAO_REDIRECT_URI: JSON.stringify(env.KAKAO_REDIRECT_URI),
-    CLOUDINARY_URL: JSON.stringify(env.CLOUDINARY_URL),
-    CLOUDINARY_KEY: JSON.stringify(env.CLOUDINARY_KEY),
-    UPLOAD_PRESET: JSON.stringify(env.UPLOAD_PRESET),
-    CRYPTOJS_SECRET_KEY: JSON.stringify(env.CRYPTOJS_SECRET_KEY),
+    'process.env.KAKAO_JAVASCRIPT_KEY': JSON.stringify(env.KAKAO_JAVASCRIPT_KEY),
+    'process.env.KAKAO_REST_API_KEY': JSON.stringify(env.KAKAO_REST_API_KEY),
+    'process.env.KAKAO_REDIRECT_URI': JSON.stringify(env.KAKAO_REDIRECT_URI),
+    'process.env.CLOUDINARY_URL': JSON.stringify(env.CLOUDINARY_URL),
+    'process.env.CLOUDINARY_KEY': JSON.stringify(env.CLOUDINARY_KEY),
+    'process.env.UPLOAD_PRESET': JSON.stringify(env.UPLOAD_PRESET),
+    'process.env.CRYPTOJS_SECRET_KEY': JSON.stringify(env.CRYPTOJS_SECRET_KEY),
   },
   resolve: {
     alias: [
