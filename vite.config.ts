@@ -7,20 +7,33 @@ import path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(({command, mode })=>{
   const env = loadEnv(mode, process.cwd(), '');
-  console.log('env', env);
+   const processEnvValues = {
+    'process.env': Object.entries(env).reduce(
+      (prev, [key, val]) => {
+        return {
+          ...prev,
+          [key]: val,
+        }
+      },
+      {},
+    )
+  }
+
+
   return {
   plugins: [react()],
   base: '/e-letter/',
-    define: {
-    'process.env':process.env,
-    // 'import.meta.env.KAKAO_JAVASCRIPT_KEY': JSON.stringify(env.KAKAO_JAVASCRIPT_KEY),
-    // 'import.meta..env.KAKAO_REST_API_KEY': JSON.stringify(env.KAKAO_REST_API_KEY),
-    // 'import.meta.env.KAKAO_REDIRECT_URI': JSON.stringify(env.KAKAO_REDIRECT_URI),
-    // 'import.meta.env.CLOUDINARY_URL': JSON.stringify(env.CLOUDINARY_URL),
-    // 'import.meta.env.CLOUDINARY_KEY': JSON.stringify(env.CLOUDINARY_KEY),
-    // 'import.meta.env.UPLOAD_PRESET': JSON.stringify(env.UPLOAD_PRESET),
-    // 'import.meta.env.CRYPTOJS_SECRET_KEY': JSON.stringify(env.CRYPTOJS_SECRET_KEY),
-  },
+  define: processEnvValues,
+  //   define: {
+  //   // 'process.env':process.env,
+  //   // 'import.meta.env.KAKAO_JAVASCRIPT_KEY': JSON.stringify(env.KAKAO_JAVASCRIPT_KEY),
+  //   // 'import.meta..env.KAKAO_REST_API_KEY': JSON.stringify(env.KAKAO_REST_API_KEY),
+  //   // 'import.meta.env.KAKAO_REDIRECT_URI': JSON.stringify(env.KAKAO_REDIRECT_URI),
+  //   // 'import.meta.env.CLOUDINARY_URL': JSON.stringify(env.CLOUDINARY_URL),
+  //   // 'import.meta.env.CLOUDINARY_KEY': JSON.stringify(env.CLOUDINARY_KEY),
+  //   // 'import.meta.env.UPLOAD_PRESET': JSON.stringify(env.UPLOAD_PRESET),
+  //   // 'import.meta.env.CRYPTOJS_SECRET_KEY': JSON.stringify(env.CRYPTOJS_SECRET_KEY),
+  // },
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
