@@ -10,7 +10,8 @@ export default function StartBut() {
             navigate('/select/card')
         } else {
            
-            console.log('import',import.meta.env)
+            console.log('import', import.meta.env) 
+            console.log('vite',import.meta.env.VITE_KAKAO_REDIRECT_URI)
              console.log('import.meta.env.VITE_KAKAO_REDIRECT_URI',import.meta.env.KAKAO_REDIRECT_URI)
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
