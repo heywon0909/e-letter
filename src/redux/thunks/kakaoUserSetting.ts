@@ -6,7 +6,7 @@ import { signWithKakaoLogin } from '../../api/firebase/firebase';
 export const kakaoUserLogin = createAsyncThunk('user/setUser',
     async (code:string, thunkApi) => {
         const grant_type = "authorization_code";
-        return axios.post(`https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${import.meta.env.VITE_KAKAO_REST_API_KEY}&redirect_uri=${import.meta.env.VITE_KAKAO_REDIRECT_URI}&response_type=code&scope=account_email,gender&code=${code}`, {
+        return axios.post(`https://kauth.kakao.com/oauth/token?grant_type=${grant_type}&client_id=${import.meta.env.KAKAO_REST_API_KEY}&redirect_uri=${import.meta.env.KAKAO_REDIRECT_URI}&response_type=code&scope=account_email,gender&code=${code}`, {
             headers: {
                 'Content-type':'application/x-www-form-urlencoded;charset=utf-8'
             }

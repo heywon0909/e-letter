@@ -5,7 +5,7 @@ import CryptoJS from "crypto-js";
 
 export function encryptData(user: UserType) {
     const userFmt = JSON.stringify(user);
-    const ciphertext = CryptoJS.AES.encrypt(userFmt,import.meta.env.VITE_CRYPTOJS_SECRET_KEY).toString();
+    const ciphertext = CryptoJS.AES.encrypt(userFmt,import.meta.env.CRYPTOJS_SECRET_KEY).toString();
     
     return ciphertext;
 }
