@@ -85,11 +85,11 @@ export default function ShareBut({letter}:Props) {
   useEffect(() => {
     if (!letter) return;
     const { from, to, bg, id, type } = letter;
-    
+    const bgUrl = bg?.includes('https') ? bg : `https://user-images.githubusercontent.com/50330312/260617551-9c44ee28-92f1-43cd-a699-89fae7b20558.png`
     const content = {
       title: `${from.name}님께서 ${to} 쓴 편지가 도착했습니다 📑`,
       description: 'custom 편지지 e-letter 📩',
-      imageUrl: bg as string,
+      imageUrl: bgUrl,
       link: {
         mobileWebUrl:`https://heywon0909.github.io/e-letter/card/share/${type}/${id}`,
         webUrl:`https://heywon0909.github.io/e-letter/card/share/${type}/${id}`
@@ -97,7 +97,7 @@ export default function ShareBut({letter}:Props) {
     }
     const itemContent = {
       profileText: 'e-letter',
-      profileImageUrl: `https://user-images.githubusercontent.com/50330312/260617551-9c44ee28-92f1-43cd-a699-89fae7b20558.png`,
+      profileImageUrl: `https://user-images.githubusercontent.com/50330312/260619632-82694439-5df9-4bb2-ba44-3d239e559b85.png`,
     }
     dispatch(createState(content, itemContent));
   },[letter]);
