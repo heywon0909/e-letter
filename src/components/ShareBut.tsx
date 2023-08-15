@@ -90,8 +90,8 @@ export default function ShareBut({letter}:Props) {
       description: 'custom 편지지 e-letter 📩',
       imageUrl: bg as string,
       link: {
-        mobileWebUrl:`https://heywon0909.github.io/e-letter/card/share/${id}/${type}`,
-        webUrl:`https://heywon0909.github.io/e-letter/card/share/${id}/${type}`
+        mobileWebUrl:`https://heywon0909.github.io/e-letter/card/share/${type}/${id}`,
+        webUrl:`https://heywon0909.github.io/e-letter/card/share/${type}/${id}`
       }
     }
     const itemContent = {
