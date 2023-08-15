@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addLetter, addUserLetter, getLetter, getLetters } from '../../api/firebase/firebase';
+import { addLetter, addUserLetter, getCompletedLetter, getLetters } from '../../api/firebase/firebase';
 import { LetterState, createLetter } from '../slices/letterSlice';
 
 export const addLetterApi = createAsyncThunk('letter/createLetter',
@@ -39,7 +39,8 @@ export const getReceivedLetterApi = createAsyncThunk('letter/receivedLetter',
         const { uid } = value;
         let result = null;
         try {
-            result = await getLetter(uid);
+            result = await getCompletedLetter(uid);
+            console.log('result',result)
             thunkApi.dispatch(createLetter(result));
 
         } catch (error) {

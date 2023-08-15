@@ -49,7 +49,7 @@ export function addUserLetter(userId:number,letter:LetterState) {
 }
 
 export function addLetter(letter: LetterState) {
-    return get(ref(database, `letter/${letter.id}`)).then(() => {
+    return get(ref(database, `letters/${letter.id}`)).then(() => {
         return set(ref(database, `letters/${letter.id}`), {
                 ...letter
         }).catch((error) => console.error(error))
@@ -58,12 +58,6 @@ export function addLetter(letter: LetterState) {
 export function getLetters(userId: number,uid:string) {
     return get(ref(database, `letter/${userId}/${uid}`)).then((snapshot) => {
        
-        return snapshot.val();
-    })
-}
-
-export function getLetter(uid:string) {
-    return get(ref(database, `letter/${uid}`)).then((snapshot) => {
         return snapshot.val();
     })
 }
