@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="https://github.com/heywon0909/e-letter/assets/50330312/4667a31c-3c9d-4d1f-8c0f-8c2df32f85ee" width="300px">
+  <img src="https://github.com/heywon0909/e-letter/assets/50330312/9c44ee28-92f1-43cd-a699-89fae7b20558" width="300px">
 </div>
-
 
 
 
