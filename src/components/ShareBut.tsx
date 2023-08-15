@@ -97,7 +97,7 @@ export default function ShareBut({letter}:Props) {
     }
     const itemContent = {
       profileText: 'e-letter',
-      profileImageUrl: `https://user-images.githubusercontent.com/50330312/259959122-a9542ade-8245-4d62-88c3-cccdae752202.png`,
+      profileImageUrl: `https://user-images.githubusercontent.com/50330312/260617551-9c44ee28-92f1-43cd-a699-89fae7b20558.png`,
     }
     dispatch(createState(content, itemContent));
   },[letter]);
