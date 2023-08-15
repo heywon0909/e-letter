@@ -40,7 +40,7 @@ export function signWithKakaoLogin(user:UserType) {
     
 }
 export function addUserLetter(userId:number,letter:LetterState) {
-    return get(ref(database, `letter/${userId}`)).then((snapshot) => {
+    return get(ref(database, `letter/${userId}`)).then(() => {
         
         return set(ref(database, `letter/${userId}/${letter.id}`), {
                 ...letter
@@ -49,8 +49,7 @@ export function addUserLetter(userId:number,letter:LetterState) {
 }
 
 export function addLetter(letter: LetterState) {
-    return get(ref(database, `letter/${letter.id}`)).then((snapshot) => {
-       
+    return get(ref(database, `letter/${letter.id}`)).then(() => {
         return set(ref(database, `letters/${letter.id}`), {
                 ...letter
         }).catch((error) => console.error(error))
@@ -59,6 +58,12 @@ export function addLetter(letter: LetterState) {
 export function getLetters(userId: number,uid:string) {
     return get(ref(database, `letter/${userId}/${uid}`)).then((snapshot) => {
        
+        return snapshot.val();
+    })
+}
+
+export function getLetter(uid:string) {
+    return get(ref(database, `letter/${uid}`)).then((snapshot) => {
         return snapshot.val();
     })
 }

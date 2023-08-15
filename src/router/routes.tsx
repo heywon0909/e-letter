@@ -6,6 +6,7 @@ import Card from '../pages/Card';
 import LoginPage from '../pages/LoginPage';
 import CardComplete from '../pages/CardComplete';
 import AuthRoute from '../components/AuthRoute';
+import CardShare from '@/pages/CardShare';
 
 const paths: RouteObject[] = [
   {
@@ -43,7 +44,7 @@ const paths: RouteObject[] = [
      {
       path: '/card/share/:cardId/:uid',
       element:(
-          <CardComplete /> 
+          <CardShare /> 
         )
     }
     ],
