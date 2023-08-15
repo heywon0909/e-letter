@@ -14,6 +14,6 @@ export function decryptData(user: string) {
     const bytes  = CryptoJS.AES.decrypt(user,import.meta.env.CRYPTOJS_SECRET_KEY);
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
     const realUser = JSON.parse(originalText)
-    console.log('originalText',realUser)
+    // console.log('originalText',realUser)
     return realUser;
 }

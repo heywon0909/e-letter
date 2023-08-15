@@ -11,10 +11,11 @@ export default function Header() {
     const dispatch = useThunkDispatch();
     
     const onLogOutUser = useCallback(() => {
+        if (!popOpen) return;
         if (!user) return;
         
         dispatch(kakaoUserLogout(user));
-    }, [dispatch, user]);
+    }, [dispatch, popOpen, user]);
     
 
     return (
@@ -26,7 +27,7 @@ export default function Header() {
                         <p className='text-sm mt-1 font-mono'>{user.name}님</p>
                         <img src={user.image} className='w-7 h-7 rounded-full' />
                     </button>
-                <div role="tooltip" className={`absolute right-0 top-12 inline-block transition-opacity duration-300 w-48 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 h-auto p-2 ${popOpen ? 'opacity-100':'opacity-0'}`} >
+                <div role="tooltip" className={`absolute right-0 top-12 inline-block transition-opacity duration-300 w-48 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 h-auto p-2 ${popOpen ? 'opacity-100 block':'opacity-0 hidden'}`} >
                     <div className='font-mono flex justify-end'>현재 로그인 상태입니다.</div>
                     <div className='mt-2 flex justify-end'>
                         <button className='w-20 h-6 bg-purple-500 text-white rounded-sm' onClick={onLogOutUser}>로그아웃</button>

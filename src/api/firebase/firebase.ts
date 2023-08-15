@@ -30,7 +30,7 @@ const database = getDatabase(app);
 export function signWithKakaoLogin(user:UserType) {
     const { id } = user
     return get(ref(database, `user/${id}`)).then((snapshot) => {
-        console.log('snpa', snapshot);
+       
         if (!snapshot.exists()) {
             return set(ref(database, `user/${id}`), {
             ...user
@@ -41,7 +41,7 @@ export function signWithKakaoLogin(user:UserType) {
 }
 export function addUserLetter(userId:number,letter:LetterState) {
     return get(ref(database, `letter/${userId}`)).then((snapshot) => {
-        console.log('snpa',snapshot);
+        
         return set(ref(database, `letter/${userId}/${letter.id}`), {
                 ...letter
         }).catch((error) => console.error(error))
@@ -50,7 +50,7 @@ export function addUserLetter(userId:number,letter:LetterState) {
 
 export function addLetter(letter: LetterState) {
     return get(ref(database, `letter/${letter.id}`)).then((snapshot) => {
-        console.log('snpa',snapshot);
+       
         return set(ref(database, `letters/${letter.id}`), {
                 ...letter
         }).catch((error) => console.error(error))
@@ -58,14 +58,14 @@ export function addLetter(letter: LetterState) {
 }
 export function getLetters(userId: number,uid:string) {
     return get(ref(database, `letter/${userId}/${uid}`)).then((snapshot) => {
-        console.log('snpa', snapshot.val());
+       
         return snapshot.val();
     })
 }
 
 export function getCompletedLetter(uid:string) {
     return get(ref(database, `letters/${uid}`)).then((snapshot) => {
-        console.log('snpa', snapshot.val());
+       
         return snapshot.val();
     })
 }
