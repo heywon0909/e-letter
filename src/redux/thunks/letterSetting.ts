@@ -40,7 +40,7 @@ export const getReceivedLetterApi = createAsyncThunk('letter/receivedLetter',
         let result = null;
         try {
             result = await getCompletedLetter(uid);
-            console.log('result',result)
+            // console.log('result',result)
             thunkApi.dispatch(createLetter(result));
 
         } catch (error) {

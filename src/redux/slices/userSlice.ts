@@ -31,18 +31,6 @@ export const userSlice = createSlice({
             return state;
         }
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(kakaoUserLogin.pending, (state, action) => {
-                console.log(action.type,state);
-            }) 
-            .addCase(kakaoUserLogin.fulfilled, (state, action) => {
-                console.log(action.type,state);
-            })
-            .addCase(kakaoUserLogin.rejected, (state, action) => {
-                console.log(action.type,state);
-            })
-    }
 });
 
 export const { setUser,outUser } = userSlice.actions;

@@ -29,7 +29,7 @@ export default function CardShare() {
 
     return (
         <section className='w-full h-full flex flex-col justify-center items-center absolute top-16'>
-            <h2 className='font-mono mt-2 -mb-5 animate-fadeIn'>편지가 도착했습니다 📑</h2>
+            <h2 className='font-mono mt-2 animate-fadeIn mb-2'>편지가 도착했습니다 📑</h2>
             <div className='lg:w-2/5 md:w-3/5 w-11/12 h-full flex flex-col justify-center items-center -mt-16'>
                 {(cardId && uid) && <CardFinishedVersion cardId={cardId} uid={uid} letter={letter as LetterState} />}
             </div>    

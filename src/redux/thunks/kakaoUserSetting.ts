@@ -11,16 +11,16 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
                 'Content-type':'application/x-www-form-urlencoded;charset=utf-8'
             }
         }).then(result => {
-            console.log('result1', result);
+            // console.log('result1', result);
             const { access_token } = result.data;
-            console.log('access',access_token)
+            // console.log('access',access_token)
             axios.get('https://kapi.kakao.com/v2/user/me', {
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
                     'Content-type':' application/x-www-form-urlencoded;charset=utf-8'
                 }
             }).then(result => {
-                console.log('result2', result);
+                // console.log('result2', result);
                 const { properties } = result.data;
                 const { kakao_account } = result.data;
                 const user = {
@@ -51,7 +51,7 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
                 
             }
         }).then(result => {
-            console.log('result1', result);
+            // console.log('result1', result);
             thunkApi.dispatch(outUser(null));
              
             })
