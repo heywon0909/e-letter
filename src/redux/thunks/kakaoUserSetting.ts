@@ -50,7 +50,7 @@ export const kakaoUserLogin = createAsyncThunk('user/setUser',
                 'Authorization':`Bearer ${user.token}`
                 
             }
-        }).then(result => {
+        }).then(() => {
             // console.log('result1', result);
             thunkApi.dispatch(outUser(null));
              

@@ -66,7 +66,7 @@ export default function CardTemplate({cardId,cardImgNum}:Props) {
         
       
         await dispatch(addLetterApi({ userId: user.id, letter: newLetter as LetterState })).then(result => {
-            console.log('result', result);
+            
             const { type } = result;
             if (type.includes('fulfilled')) {
                 const url = `/card/complete/${newLetter.type}/${newLetter.id}`
