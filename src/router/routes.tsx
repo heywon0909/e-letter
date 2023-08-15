@@ -39,6 +39,12 @@ const paths: RouteObject[] = [
           <CardComplete />
         </AuthRoute>  
         )
+      },
+     {
+      path: '/card/share/:cardId/:uid',
+      element:(
+          <CardComplete /> 
+        )
     }
     ],
   },

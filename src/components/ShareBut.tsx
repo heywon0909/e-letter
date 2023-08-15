@@ -1,77 +1,111 @@
+import { LetterState } from '@/redux/slices/letterSlice';
+import { useEffect, useReducer } from 'react';
 import { RiKakaoTalkFill } from 'react-icons/ri';
 
-export default function ShareBut() {
-   
+interface Props{
+  letter:LetterState
+}
+
+const objectType = 'feed' as const;
+type buttonTitle = string;
+interface contentObj {
+  title: string,
+  description: string,
+  imageUrl: string,
+  link: {
+    mobileWebUrl: string,
+    webUrl:string
+  }
+}
+type itemObj = {
+  item: string,
+  itemOp:string
+}
+interface itemContentObj {
+    profileText: string,
+    profileImageUrl:string,
+    titleImageUrl?:string,
+    titleImageText?: string,
+    titleImageCategory?: string,
+    items?: itemObj[],
+    sum?:string,
+    sumOp?: '15000원',
+}
+interface ReducerState{
+  objectType: typeof objectType,
+  content?: contentObj,
+  itemContent?:itemContentObj,
+  buttonTitle:buttonTitle,
+}
+
+const initialState: ReducerState = {
+  objectType: 'feed',
+  buttonTitle:'편지 보러가기'
+}
+
+export const CREATE_STATE = "CREATE_STATE" as const;
+
+interface CreateStateAction {
+  type: typeof CREATE_STATE;
+  content: contentObj,
+  itemContent:itemContentObj
+}
+
+export const createState = (
+   content: contentObj,
+  itemContent:itemContentObj
+): CreateStateAction => {
+  return {
+    type:CREATE_STATE,
+    content,itemContent
+  }
+}
+
+type ReducerActions = CreateStateAction
+
+const reducer = (state = initialState, action: ReducerActions): ReducerState => {
+  switch (action.type) {
+    case CREATE_STATE:
+      return {
+        ...state,
+        content: action.content,
+        itemContent: action.itemContent
+      }
+    default:
+      return state;
+  }
+}
+
+export default function ShareBut({letter}:Props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  console.log('state', state);
+
+
+  useEffect(() => {
+    if (!letter) return;
+    const { from, to, bg, id, type } = letter;
+    
+    const content = {
+      title: `${from.name}님께서 ${to} 쓴 편지가 도착했습니다 📑`,
+      description: 'custom 편지지 e-letter 📩',
+      imageUrl: bg as string,
+      link: {
+        mobileWebUrl:`https://heywon0909.github.io/e-letter/card/share/${id}/${type}`,
+        webUrl:`https://heywon0909.github.io/e-letter/card/share/${id}/${type}`
+      }
+    }
+    const itemContent = {
+      profileText: 'e-letter',
+      profileImageUrl: `https://user-images.githubusercontent.com/50330312/259959122-a9542ade-8245-4d62-88c3-cccdae752202.png`,
+    }
+    dispatch(createState(content, itemContent));
+  },[letter]);
         
 
     const shareMessage = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore   
-     Kakao.Share.sendDefault({
-  objectType: 'feed',
-  content: {
-    title: '오늘의 디저트',
-    description: '아메리카노, 빵, 케익',
-    imageUrl:
-      'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
-    link: {
-      mobileWebUrl: 'https://developers.kakao.com',
-      webUrl: 'https://developers.kakao.com',
-    },
-  },
-  itemContent: {
-    profileText: 'Kakao',
-    profileImageUrl: 'https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-    titleImageUrl: 'https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-    titleImageText: 'Cheese cake',
-    titleImageCategory: 'Cake',
-    items: [
-      {
-        item: 'Cake1',
-        itemOp: '1000원',
-      },
-      {
-        item: 'Cake2',
-        itemOp: '2000원',
-      },
-      {
-        item: 'Cake3',
-        itemOp: '3000원',
-      },
-      {
-        item: 'Cake4',
-        itemOp: '4000원',
-      },
-      {
-        item: 'Cake5',
-        itemOp: '5000원',
-      },
-    ],
-    sum: '총 결제금액',
-    sumOp: '15000원',
-  },
-  social: {
-    likeCount: 10,
-    commentCount: 20,
-    sharedCount: 30,
-  },
-  buttons: [
-    {
-      title: '웹으로 이동',
-      link: {
-        mobileWebUrl: 'https://developers.kakao.com',
-        webUrl: 'https://developers.kakao.com',
-      },
-    },
-    {
-      title: '앱으로 이동',
-      link: {
-        mobileWebUrl: 'https://developers.kakao.com',
-        webUrl: 'https://developers.kakao.com',
-      },
-    },
-  ],
-});
+    Kakao.Share.sendDefault(state);
     }
 
     return (
