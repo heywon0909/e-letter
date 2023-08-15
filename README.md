@@ -5,7 +5,7 @@
 
 
 
-**Headless** E-letter
+**Headless** E-letter <img src="https://github.com/heywon0909/e-letter/assets/50330312/82694439-5df9-4bb2-ba44-3d239e559b85" width="60px" padding="2px">
 
 ## Come to [Demo](https://heywon0909.github.io/e-letter/)
 
