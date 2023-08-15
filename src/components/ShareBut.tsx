@@ -43,7 +43,7 @@ const initialState: ReducerState = {
   buttonTitle:'편지 보러가기'
 }
 
-export const CREATE_STATE = "CREATE_STATE" as const;
+const CREATE_STATE = "CREATE_STATE" as const;
 
 interface CreateStateAction {
   type: typeof CREATE_STATE;
@@ -51,7 +51,8 @@ interface CreateStateAction {
   itemContent:itemContentObj
 }
 
-export const createState = (
+
+const createState = (
    content: contentObj,
   itemContent:itemContentObj
 ): CreateStateAction => {
@@ -78,7 +79,7 @@ const reducer = (state = initialState, action: ReducerActions): ReducerState => 
 
 export default function ShareBut({letter}:Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log('state', state);
+
 
 
   useEffect(() => {
