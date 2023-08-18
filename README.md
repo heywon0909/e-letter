@@ -28,6 +28,15 @@ For E-letter 📑,
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
 
 
+
+
+
+
+![e-letter - Chrome 2023-08-17 17-42-03 (online-video-cutter com) (1)](https://github.com/heywon0909/e-letter/assets/50330312/89960000-6830-4fa5-957e-5a5eb30dceba)
+
+
+
+
 ### React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
