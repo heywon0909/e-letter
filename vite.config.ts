@@ -7,7 +7,6 @@ import path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(({command, mode })=>{
   const env = loadEnv(mode, process.cwd(), '');
-  console.log('env', env);
   return {
   plugins: [react()],
   base: '/e-letter/',
